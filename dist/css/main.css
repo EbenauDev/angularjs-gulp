@@ -1,0 +1,35 @@
+@import "../../node_modules/material-icons/css/material-icons.css";
+html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+  background-color: blueviolet;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+.wrapper {
+  width: 100%;
+  max-width: 960px;
+  max-height: 400px;
+  overflow: scroll;
+  display: flex;
+}
+.wrapper::-webkit-scrollbar {
+  display: none;
+}
+.wrapper .galeria {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 960px;
+  width: 100%;
+}
+.wrapper .galeria img {
+  max-height: 400px;
+  height: 100%;
+  width: 100%;
+}

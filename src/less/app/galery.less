@@ -1,0 +1,21 @@
+.wrapper {
+  width: 100%;
+  max-width: 960px;
+  max-height: 400px;
+  overflow: scroll;
+  display: flex; //Firefox
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  .galeria {
+    display: flex;
+    max-width: 960px;
+    width: 100%;
+
+    img {
+      max-height: 400px;
+      height: 100%;
+      width: 100%;
+    }
+  }
+}

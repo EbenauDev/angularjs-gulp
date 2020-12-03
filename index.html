@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app" ng-controller="AppController as vm">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="{{vm.descricao}}">
+  <title>{{vm.titulo}}</title>
+    <!-- inject:css -->
+  <link rel="stylesheet" href="/src/css/main.css">
+  <!-- endinject -->
+</head>
+<body>
+  <div class="container">
+    <h1>Galeria de fotos</h1>
+      <div class="wrapper">
+          <div class="card-zoom">
+            <span class="material-icons">
+              zoom_in
+              </span>
+          </div>
+          <div class="galeria">
+              <img ng-repeat="imagem in vm.geleria" ng-src="{{imagem}}" alt="minha imagem">
+          </div>
+      </div>
+  </div>
+  
+
+    <!-- inject:js -->
+    <script src="/src/js/a-libs.js"></script>
+    <script src="/src/js/b-app.js"></script>
+    <!-- endinject -->
+</body>
+</html>
