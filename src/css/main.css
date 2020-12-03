@@ -1,7 +1,7 @@
 :root {
-  --color-primary: "#85FFC7";
-  --color-secundary: "#297373";
-  --color-text: "#39393A";
+  --color-primary: #85ffc7;
+  --color-secundary: #297373;
+  --color-text: #39393a;
 }
 html {
   margin: 0;

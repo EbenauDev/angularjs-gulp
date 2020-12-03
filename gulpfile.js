@@ -18,7 +18,6 @@ const appBundle = {
 const libsBundle = {
   src: [
     "./node_modules/angular/angular.js",
-    "./node_modules/@uirouter/angularjs/release/angular-ui-router.js"
   ]
 }
 
@@ -57,15 +56,6 @@ gulp.task('compile-app-less-dev', function () {
     .pipe(gulp.dest(pathCss))
 });
 
-gulp.task('compile-lib-less-dev', function () {
-  return gulp.src(libLess, { read: true })
-    .pipe(less({
-      paths: [path.join(__dirname, 'less', 'include')]
-    }))
-    .pipe(concant("libs.css"))
-    .pipe(gulp.dest(pathCss))
-});
-
 gulp.task('compile-libs-js-dev', function () {
   return gulp.src(libsBundle.src)
     .pipe(concant("a-libs.js"))
@@ -92,7 +82,6 @@ const taskListDev = [
   'clean-js-dev',
   'clean-css-dev',
   'compile-app-less-dev',
-  'compile-lib-less-dev',
   'compile-libs-js-dev',
   'compile-app-js-dev',
   'inject-dev'
@@ -114,14 +103,6 @@ gulp.task('compile-app-less-prod', function () {
     .pipe(gulp.dest("./dist/css"))
 });
 
-gulp.task('compile-lib-less-prod', function () {
-  return gulp.src(libLess)
-    .pipe(less({
-      paths: [path.join(__dirname, 'less', 'include')]
-    }))
-    .pipe(concant("libs.css"))
-    .pipe(gulp.dest("./dist/css"))
-});
 
 gulp.task('compile-libs-js-prod', function () {
   return gulp.src(libsBundle.src)
@@ -158,7 +139,6 @@ gulp.task("inject-prod", function () {
 const taskListProd = [
   'clean-dist',
   'compile-app-less-prod',
-  'compile-lib-less-prod',
   'compile-libs-js-prod',
   'compile-app-js-prod',
   'compile-html-prod',

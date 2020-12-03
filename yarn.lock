@@ -815,23 +815,6 @@
     lodash "^4.17.19"
     to-fast-properties "^2.0.0"
 
-"@fortawesome/fontawesome-free@^5.15.1":
-  version "5.15.1"
-  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-free/-/fontawesome-free-5.15.1.tgz#ccfef6ddbe59f8fe8f694783e1d3eb88902dc5eb"
-  integrity sha512-OEdH7SyC1suTdhBGW91/zBfR6qaIhThbcN8PUXtXilY4GYnSBbVqOntdHbC1vXwsDnX0Qix2m2+DSU1J51ybOQ==
-
-"@uirouter/angularjs@^1.0.28":
-  version "1.0.28"
-  resolved "https://registry.yarnpkg.com/@uirouter/angularjs/-/angularjs-1.0.28.tgz#3f4a567c3f0199c254729050fd77cb0e15f97246"
-  integrity sha512-PI9kgUjQu5ItRVUMvdp9j613IT6nCmFRlahTP2MiD4k1RJjY/RwIGzHI9pjuz7PAfdHvxAqGOZEOl6EjVmchyw==
-  dependencies:
-    "@uirouter/core" "6.0.6"
-
-"@uirouter/core@6.0.6":
-  version "6.0.6"
-  resolved "https://registry.yarnpkg.com/@uirouter/core/-/core-6.0.6.tgz#4bea0ca88790a939d8e84ba05a31b96f50d9abe8"
-  integrity sha512-+i1iNaPQRp1JoEnxi4EsTX30bSvkWtPEenENWdvdIzX615Q3WCWwnbW9DtrwX9gSD5qmWEaQEtGMU0uF3qJ+1g==
-
 accord@^0.29.0:
   version "0.29.0"
   resolved "https://registry.yarnpkg.com/accord/-/accord-0.29.0.tgz#b741c176d00435c5929d466dfe8cf6bee933b1e4"
