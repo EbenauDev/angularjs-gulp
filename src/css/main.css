@@ -1,17 +1,21 @@
+:root {
+  --color-primary: "#85FFC7";
+  --color-secundary: "#297373";
+  --color-text: "#39393A";
+}
 html {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
 html,
 body {
-  background-color: blueviolet;
+  background-color: var(--color-primary);
   height: 100vh;
   display: flex;
   align-items: center;
+  font-family: Arial, Helvetica, sans-serif;
 }
-
 .wrapper {
   width: 100%;
   max-width: 960px;
@@ -19,17 +23,14 @@ body {
   overflow: scroll;
   display: flex;
 }
-
 .wrapper::-webkit-scrollbar {
   display: none;
 }
-
 .wrapper .galeria {
   display: flex;
   max-width: 960px;
   width: 100%;
 }
-
 .wrapper .galeria img {
   max-height: 400px;
   height: 100%;

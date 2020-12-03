@@ -5,7 +5,7 @@ const less = require('gulp-less');
 const babel = require('gulp-babel');
 const inject = require('gulp-inject');
 const uglify = require('gulp-uglify');
-const importCss = require('gulp-import-css');
+const clean = require('gulp-clean');
 
 
 const appBundle = {
@@ -22,20 +22,34 @@ const libsBundle = {
   ]
 }
 
-const lessBundle = {
-  src: [
-    "./src/less/import.app.less",
-    "./src/less/import.libs.less",
-  ]
-}
+
+const appLess = "./src/less/import.app.less";
+const libLess = "./src/less/import.libs.less";
 
 const pathCss = "./src/css";
 const pathLibs = "./src/js";
 
 
+// Clean
+gulp.task('clean-js-dev', function () {
+  return gulp.src('./src/js/*.js', { read: false })
+    .pipe(clean());
+});
+
+gulp.task('clean-css-dev', function () {
+  return gulp.src('./src/css/*.css', { read: false })
+    .pipe(clean());
+});
+
+gulp.task('clean-dist', function () {
+  return gulp.src('./dist', { read: false })
+    .pipe(clean());
+})
+
+
 // Dev Mode
 gulp.task('compile-app-less-dev', function () {
-  return gulp.src(lessBundle.src, { read: true })
+  return gulp.src(appLess, { read: true })
     .pipe(less({
       paths: [path.join(__dirname, 'less', 'include')]
     }))
@@ -44,7 +58,7 @@ gulp.task('compile-app-less-dev', function () {
 });
 
 gulp.task('compile-lib-less-dev', function () {
-  return gulp.src(lessBundle.src, { read: true })
+  return gulp.src(libLess, { read: true })
     .pipe(less({
       paths: [path.join(__dirname, 'less', 'include')]
     }))
@@ -74,7 +88,16 @@ gulp.task("inject-dev", function () {
     .pipe(gulp.dest("./"))
 });
 
-gulp.task('build:dev', gulp.series(gulp.parallel('compile-app-less-dev', 'compile-lib-less-dev', 'compile-libs-js-dev', 'compile-app-js-dev', 'inject-dev'),
+const taskListDev = [
+  'clean-js-dev',
+  'clean-css-dev',
+  'compile-app-less-dev',
+  'compile-lib-less-dev',
+  'compile-libs-js-dev',
+  'compile-app-js-dev',
+  'inject-dev'
+]
+gulp.task('build:dev', gulp.series(gulp.parallel(taskListDev),
   function (done) {
     done();
   }));
@@ -83,11 +106,20 @@ gulp.task('build:dev', gulp.series(gulp.parallel('compile-app-less-dev', 'compil
 
 // Prod Mode
 gulp.task('compile-app-less-prod', function () {
-  return gulp.src(lessBundle.src)
+  return gulp.src(appLess)
     .pipe(less({
       paths: [path.join(__dirname, 'less', 'include')]
     }))
     .pipe(concant("main.css"))
+    .pipe(gulp.dest("./dist/css"))
+});
+
+gulp.task('compile-lib-less-prod', function () {
+  return gulp.src(libLess)
+    .pipe(less({
+      paths: [path.join(__dirname, 'less', 'include')]
+    }))
+    .pipe(concant("libs.css"))
     .pipe(gulp.dest("./dist/css"))
 });
 
@@ -123,11 +155,17 @@ gulp.task("inject-prod", function () {
 
 });
 
-gulp.task('build:prod', gulp.series(gulp.parallel('compile-app-less-prod',
+const taskListProd = [
+  'clean-dist',
+  'compile-app-less-prod',
+  'compile-lib-less-prod',
   'compile-libs-js-prod',
   'compile-app-js-prod',
-  "compile-html-prod",
-  "inject-prod"),
+  'compile-html-prod',
+  'inject-prod'
+]
+
+gulp.task('build:prod', gulp.series(gulp.parallel(taskListProd),
   function (done) {
     done();
   }));
